@@ -35,33 +35,21 @@ class ModelGenerator(nn.Module):
         # Neural network model generation
         out = self.conv1(input)
         out = F.relu(out)
-<<<<<<< HEAD
-
-=======
->>>>>>> 21813058457294dd6aac94de1af16c5b0d5c9354
         out = self.conv2(out)
         out = self.pool2(out)
         out = F.relu(out)
 
         out = self.conv3(out)
         out = F.relu(out)
-<<<<<<< HEAD
-
-=======
->>>>>>> 21813058457294dd6aac94de1af16c5b0d5c9354
         out = self.conv4(out)
         out = self.norm1(out)
         out = self.pool4(out)
         out = F.relu(out)
 
         out = self.dropout(out)
-<<<<<<< HEAD
         
         out = out.view(out.size(0), -1)
 
-=======
-        out = out.view(-1, 810)
->>>>>>> 21813058457294dd6aac94de1af16c5b0d5c9354
         out = self.fc1(out)
         out = F.relu(out)
         out = self.fc2(out)

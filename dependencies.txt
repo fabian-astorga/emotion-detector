@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 -------------------------------------------------------------------------------------------------
 1. Install python in Microsoft Store or 3.9
 
@@ -26,4 +27,24 @@
 
 10. Install Flask
 - pip install flask
+=======
+-------------------------------------------------------------------------------------------------
+1. Install python in Microsoft Store or 3.9
+2. Upgrade pip
+- python -m pip install --upgrade pip
+3. Install CUDA Toolkit at: https://developer.nvidia.com/cuda-downloads
+4. Install PyTorch according to CUDA version: https://pytorch.org/get-started/locally/
+- pip install torch==1.9.0+cu111 torchvision==0.10.0+cu111 torchaudio===0.9.0 -f https://download.pytorch.org/whl/torch_stable.html
+5. Install openCV
+- pip install opencv-python
+6. Install matplotlib
+- pip install matplotlib
+7. Install pandas
+- pip install pandas
+8. Install sklearn
+- pip install sklearn
+
+8. Install tqdm
+- pip install tqdm
+>>>>>>> 21813058457294dd6aac94de1af16c5b0d5c9354
 ---------------------------------------------------------------------------------------------------

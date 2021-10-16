@@ -8,9 +8,15 @@ from model_generator import ModelGenerator
 from downloader import Downloader
 
 #Training parameters
+<<<<<<< HEAD
 epochs = 300
 learning_rate = 1e-3
 batch_size = 3000
+=======
+epochs = 50
+learning_rate = 1e-3
+batch_size = 1500
+>>>>>>> 21813058457294dd6aac94de1af16c5b0d5c9354
 weight_decay = 1e-4
 
 #File paths
@@ -22,7 +28,11 @@ validation_img_dir = './data/val/'
 # Check if GPU is available
 device = ""
 if (torch.cuda.is_available()):
+<<<<<<< HEAD
     device = "cuda"
+=======
+    device = "cuda:0"
+>>>>>>> 21813058457294dd6aac94de1af16c5b0d5c9354
 else:
     device = "cpu"
 torch.device(device)
@@ -72,15 +82,25 @@ class Training():
             print('Epoch: {} \tTraining Loss: {:.8f} \tValidation Loss {:.8f} \tTraining Accuracy {:.3f}% \tValidation Accuracy {:.3f}%'
                                                             .format(e+1, train_loss,validation_loss,train_acc*100, val_acc*100))
 
+<<<<<<< HEAD
         torch.save(net.state_dict(),'./models/accuracy{:.3f}epochs{}batch{:.3f}lr{:.3f}.pt'.format(val_acc*100,epochs,batch_size,learning_rate))
+=======
+        torch.save(net.state_dict(),'./models/new_model.pt'.format(epochs,batch_size,lr))
+>>>>>>> 21813058457294dd6aac94de1af16c5b0d5c9354
         print("Training finished")
 
 if __name__ == '__main__':
   
     # Generates images and val.csv
+<<<<<<< HEAD
     #  downloader = Downloader('./data')
     #  downloader.save_images_from_csv('train')
     #  downloader.save_images_from_csv('val')
+=======
+    # downloader = Downloader('./data')
+    # downloader.save_images_from_csv('train')
+    # downloader.save_images_from_csv('val')
+>>>>>>> 21813058457294dd6aac94de1af16c5b0d5c9354
 
     net = ModelGenerator() #Creating the model
     net.to(device) # Loading it to gpu/cpu

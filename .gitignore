@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -268,4 +267,3 @@ dmypy.json
 images/
 data/
 models/
->>>>>>> 21813058457294dd6aac94de1af16c5b0d5c9354

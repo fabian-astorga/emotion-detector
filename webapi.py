@@ -12,8 +12,8 @@ def index():
     if image_base64 is None:
         return jsonify( {"response": "Could not process image. Try again.", "status":500} )
     else:
-        image_response = catalog_image(image_base64)
-        return jsonify({"response": str(image_response), "status":200})
+        image_response, tags = catalog_image(image_base64)
+        return jsonify({"response": str(image_response),"tags": tags, "status":200})
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=3030)

@@ -1,4 +1,9 @@
-import React from 'react';import { 
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import * as ImagePicker from 'expo-image-picker';
+import { api } from './config';
+import { 
   ImageBackground, 
   StyleSheet, 
   Text, 
@@ -8,13 +13,10 @@ import React from 'react';import {
   BackHandler,
   Image 
 } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import * as ImagePicker from 'expo-image-picker';
 
 const sendImage = async (base64, { navigation }) => {
 
-  fetch('http://34.192.82.147:3030/process-image', {
+  fetch(api.URL + 'process-image', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -24,7 +26,11 @@ const sendImage = async (base64, { navigation }) => {
     }),
   }).then((response) => response.json())
       .then((responseJson) => {
-        navigation.navigate('Resultado', {finalImage: responseJson.response});
+        navigation.navigate('Resultado', 
+        {
+          finalImage: responseJson.response, 
+          tags: responseJson.tags
+        });
       })
       .catch((error) => {
         console.log('ERROR: ' + error);
@@ -78,9 +84,9 @@ function HomeScreen({ navigation }) {
 
 function ResultScreen({ route }) {
 
-  const { finalImage } = route.params;
+  const { finalImage, tags } = route.params;
   let result = finalImage.split("'");
-  console.log('FINAL IMAGE: ' + result[1]);
+  //console.log('FINAL IMAGE: ' + result[1]);
 
   return (
     <View style={styles.container}>
@@ -88,6 +94,7 @@ function ResultScreen({ route }) {
         <Image style={{width: 400, height: 400, resizeMode: 'cover', borderWidth: 5, borderColor: 'black'}} 
               source={{uri: 'data:image/jpg;base64,'+result[1]}} 
         />
+        <Text style={styles.text}>{ tags }</Text>
       </ImageBackground>
     </View>
   )
